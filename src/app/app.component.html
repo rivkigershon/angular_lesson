@@ -1,0 +1,10 @@
+<h1 class="h1">משחק בול פגיעה</h1>
+<app-colors-to-guess [butNewGame]="butNewGame" (realColors)="updateRealColors($event)"></app-colors-to-guess>
+<app-guess (newGuessAdded)="insertNewGuess($event)"></app-guess><br><br>
+<div>
+    <div *ngFor="let guess of allGuesses;">
+        <app-show-colors [guessColors]=guess></app-show-colors>
+        <app-mark (win)="winner($event)" [guessColors]="guess" [realColors]="realColors"></app-mark>
+    </div>
+</div>
+<button [disabled]="!butNewGame" (click)="newGame()">משחק חדש</button>
